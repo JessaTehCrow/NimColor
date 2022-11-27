@@ -98,8 +98,9 @@ proc valueToKey(table:Table[string,int], value:int):string =
 
 proc color*(raw:string, autoReset:bool=true): string =
     var inp = raw
+    echo raw
 
-    if autoReset and raw[^3..^1] != "[0m" and raw[^7..^1] != "&reset;":
+    if autoReset and raw.endsWith("[0m") != true and raw.endsWith("&reset;") != true:
         inp = raw & "&reset;"
 
     let strMatch = inp.findAll(full.re)

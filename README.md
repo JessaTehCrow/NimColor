@@ -9,5 +9,5 @@ However, it is functioning.
 
 This is made solely for myself, so some functionalities might not be included.
 
-As well as thiis being tested on a windows device *only*, without any extensive cross platform functionality testing being done.
+As well as this being tested on a windows device *only*, without any extensive cross platform functionality testing being done.
 Which means this may or may not function as expected on your device.
