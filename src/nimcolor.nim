@@ -98,7 +98,6 @@ proc valueToKey(table:Table[string,int], value:int):string =
 
 proc color*(raw:string, autoReset:bool=true): string =
     var inp = raw
-    echo raw
 
     if autoReset and raw.endsWith("[0m") != true and raw.endsWith("&reset;") != true:
         inp = raw & "&reset;"
