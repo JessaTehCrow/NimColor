@@ -20,6 +20,12 @@ echo "&bgRed;This has a red background".color
 echo "&invert;This has inverted colors".color
 
 echo "&ff00ff;This has hex color ff00ff".color
+
+echo "&0,255,255;This hax rgb color 0,255,255".color
+
+echo "&bgffff00;&black;This has hex background color ffff00".color
+
+echo "&bg100,100,100;This has rgb background color (100,100,100)".color
 ```
 ![](images/example1.png)
 
