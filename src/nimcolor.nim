@@ -169,3 +169,13 @@ proc unColor*(buf:string): string =
         newString = newString.replace(raw, fmt"&{colors.valueToKey(color)};")
 
     return newString
+
+
+proc removeColor*(buf:string):string = 
+    let strMatch = buf.unColor.findAll(re(full))
+    var newString = buf.unColor
+
+    for raw in strMatch:
+        newString = newString.replace(raw, "")
+
+    return newString
