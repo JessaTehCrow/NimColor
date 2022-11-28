@@ -46,19 +46,24 @@ gold        bgDarkBlue    bgDarkBlue    blue           bgBlue
 
 ### Procs
 
+All available procs for the nimcolor package.
+___
+
 #### color
 
 Applies the color to the string. 
 
 ```nim
 proc color*(raw:string, autoReset:bool=true): string
+
+"&red;This is red".color == "\e[91mThis is red\e[0m"
+"&red;This is red".color(autoReset=false) == "\e[91mThis is red"
 ```
 
-`autoReset` default = true
+if `autoReset` is true, it automatically adds a `&reset;` at the end of the string if set to true.
+If this is not done, it'll apply the color values to every line that comes after it until reset or overwritten.
 
-automatically adds a `&reset;` at the end of the string if set to true.
-
-
+___
 #### colorEscape
 
 Escapes the color codes in the string, so the `color` proc doesn't colorify them anymore
@@ -69,7 +74,7 @@ proc colorEscape*(buf:string): string
 
 "&red;Hello there".colorEscape == "&red:Hello there"
 ```
-
+___
 #### colorUnEscape
 
 Unescapes the escaped string
@@ -79,7 +84,7 @@ proc colorUnEscape*(buf:string): string
 
 "&red:Hello there".colorUnescape == "&red;Hello there
 ```
-
+___
 #### unColor
 
 Removes the color from a string back into the color codes
@@ -95,7 +100,7 @@ proc unColor*(buf:string): string
 ```
 
 **NOTE:** since hex color code is used like rgb in the back end, `unColor` decodes this to rgb.
-
+___
 #### removeColor
 
 Completely removes any color from a string. 
