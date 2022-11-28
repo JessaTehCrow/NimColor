@@ -63,6 +63,29 @@ proc color*(raw:string, autoReset:bool=true): string
 if `autoReset` is true, it automatically adds a `&reset;` at the end of the string if set to true.
 If this is not done, it'll apply the color values to every line that comes after it until reset or overwritten.
 
+**Syntax**
+
+Color uses color codes from either name defined colors, hex or rgb names.
+The syntax is as follows: `&value;` where you replace `value` with a name, hex, or rgb (seperated with commas)
+
+Any hex/rgb value can also be for the background by adding `bg` in front of it.
+
+```nim
+# Name Defined Color
+"&red;"
+"&blue;"
+"&bgBlue;"
+
+# Hex Colors
+"&aAbBcC;"
+"&112233;"
+"&bgaAbBcC;"
+
+# RGb colors
+"&255,255,255;"
+"&bg255,255,255;"
+```
+
 ___
 #### colorEscape
 
