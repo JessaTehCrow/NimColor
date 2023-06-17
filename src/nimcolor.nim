@@ -181,7 +181,6 @@ proc removeColor*(buf:string):string =
     var newString = buf.unColor
 
     for raw in strMatch:
-        echo raw
         newString = newString.replace(raw, "")
 
     return newString
