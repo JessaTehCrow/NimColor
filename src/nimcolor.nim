@@ -164,6 +164,11 @@ proc unColor*(buf:string): string =
             newString = newString.replace(raw, fmt"&{col[0]},{col[1]},{col[2]};")
             continue
 
+        elif raw[1..3] == "[48":
+            let col = stringToRgb(raw[7..^2])
+            newString = newString.replace(raw, fmt"&bg{col[0]},{col[1]},{col[2]};")
+            continue
+
         var color:int
         discard parseInt(raw.find(re"\d+").get.match, color)
         newString = newString.replace(raw, fmt"&{colors.valueToKey(color)};")
@@ -176,6 +181,7 @@ proc removeColor*(buf:string):string =
     var newString = buf.unColor
 
     for raw in strMatch:
+        echo raw
         newString = newString.replace(raw, "")
 
     return newString
