@@ -157,14 +157,13 @@ proc colorUnEscape*(buf:string): string =
 proc unColor*(buf:string): string = 
     let strMatch = buf.findAll(re"\e\[[0-9;]+m")
     var newString = buf
-
     for raw in strMatch:
-        if raw[1..3] == "[38":
+        if raw[2..3] == "38":
             let col = stringToRgb(raw[7..^2])
             newString = newString.replace(raw, fmt"&{col[0]},{col[1]},{col[2]};")
             continue
 
-        elif raw[1..3] == "[48":
+        elif raw[2..3] == "48":
             let col = stringToRgb(raw[7..^2])
             newString = newString.replace(raw, fmt"&bg{col[0]},{col[1]},{col[2]};")
             continue
