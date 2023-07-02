@@ -175,11 +175,25 @@ proc unColor*(buf:string): string =
     return newString
 
 
-proc removeColor*(buf:string):string = 
-    let strMatch = buf.unColor.findAll(re(full))
-    var newString = buf.unColor
+proc removeColor*(buf:string): string = 
+    let strMatch = buf.findAll(re"\e\[[0-9;]+m")
+    var newString = buf
 
     for raw in strMatch:
         newString = newString.replace(raw, "")
 
     return newString
+
+
+proc removeSyntax*(buf:string) :string = 
+    let strMatch = buf.removeColor.findAll(re(full))
+    var newString = buf.removeColor
+
+    for raw in strMatch:
+        newString = newString.replace(raw,"")
+
+    return newString
+
+
+proc removeAllColor*(buf:string):string = 
+    return buf.removeColor.removeSyntax
